@@ -1,0 +1,18 @@
+services:
+  postgres_db_prod:
+    image: postgres:latest
+    command: ["postgres", "-c", "wal_level=logical"]
+    environment:
+      POSTGRES_USER: ${PROD_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${PROD_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${PROD_POSTGRES_DB}
+    ports:
+      - "5432:5432"
+  postgres_db_cprod:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${CPROD_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${CPROD_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${CPROD_POSTGRES_DB}
+    ports:
+      - "2345:5432"
