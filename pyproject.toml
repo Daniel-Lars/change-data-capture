@@ -1,0 +1,17 @@
+[project]
+name = "change-data-capture"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Daniel-Lars", email = "daniel2wendel@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+change-data-capture = "change_data_capture:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
