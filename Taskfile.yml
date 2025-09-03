@@ -1,0 +1,47 @@
+version: '3'
+
+
+dotenv: ['.env', '{{.ENV}}/.env', '{{.HOME}}/.env']
+
+tasks:
+
+  database:start:
+    desc: Start postgres databases
+    dir: ~/code/change_data_capture/database
+    cmds:
+      - docker compose up -d
+    silent: true
+
+  database:stop:
+    desc: Start postgres databases
+    dir: ~/code/change_data_capture/database
+    cmds:
+      - docker compose down
+    silent: true
+  
+  debezium:start:
+    desc: Start Debezium Services
+    dir: ~/code/change_data_capture/debezium
+    cmds:
+      - docker compose up -d
+    silent: true
+
+  debezium:stop:
+    desc: Stop Debezium Services
+    dir: ~/code/change_data_capture/debezium
+    cmds:
+      - docker compose down
+    silent: true
+
+
+  infra:start:all:
+    desc: Start all infrastructure 
+    cmds: 
+      - task: debezium:start
+      - task: database:start
+
+  infra:destroy:all:
+    desc: Destroy all infrastructure 
+    cmds: 
+      - task: debezium:stop
+      - task: database:stop
