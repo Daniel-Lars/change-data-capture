@@ -1,3 +1,7 @@
+networks:
+  cdc-network:
+    driver: bridge
+    name: cdc-network 
 services:
   postgres_db_prod:
     image: postgres:latest
@@ -8,6 +12,8 @@ services:
       POSTGRES_DB: ${PROD_POSTGRES_DB}
     ports:
       - "5432:5432"
+    networks:
+      - cdc-network
   postgres_db_cprod:
     image: postgres:latest
     environment:
@@ -16,3 +22,5 @@ services:
       POSTGRES_DB: ${CPROD_POSTGRES_DB}
     ports:
       - "2345:5432"
+    networks:
+      - cdc-network
