@@ -7,7 +7,11 @@ authors = [
     { name = "Daniel-Lars", email = "daniel2wendel@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "dotenv>=0.9.9",
+    "kafka-python>=2.2.15",
+    "requests>=2.32.5",
+]
 
 [project.scripts]
 change-data-capture = "change_data_capture:main"

@@ -1,0 +1,20 @@
+curl -X POST \
+'http://localhost:8083/connectors' \
+--header 'Accept: */*' \
+--header 'User-Agent: Thunder Client (https://www.thunderclient.com)' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "my-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "plugin.name": "pgoutput",
+    "database.hostname": "host.docker.internal",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "password",
+    "database.dbname" : "prod_db",
+    "database.server.name": "postgres",
+    "table.include.list": "public.cars",
+    "topic.prefix": "mypg"
+  }
+}'
