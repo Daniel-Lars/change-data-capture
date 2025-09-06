@@ -37,8 +37,8 @@ tasks:
   infra:start:all:
     desc: Start all infrastructure 
     cmds: 
-      - task: debezium:start
       - task: database:start
+      - task: debezium:start
 
   infra:destroy:all:
     desc: Destroy all infrastructure 
