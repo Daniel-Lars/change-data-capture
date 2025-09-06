@@ -10,7 +10,7 @@ echo "Setting up Confluent JDBC Sink connector..."
 curl -X POST http://localhost:8083/connectors \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "jdbc-connector",  
+    "name": "postgres-sink-connector",  
     "config": {
         "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",  
         "tasks.max": "1",  
